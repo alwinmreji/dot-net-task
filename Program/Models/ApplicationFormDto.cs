@@ -11,7 +11,7 @@ namespace Program.Models
         public string UploadedCoverImage { get; set; }
         public PersonalInformationDto PersonalInformation { get; set; }
         public ProfileInformationDto ProfileInformation { get; set; }
-        public List<QuestionsDto> AdditionalQuestionList { get; set; }
+        public List<QuestionDto> AdditionalQuestionList { get; set; }
 
     }
     public class InternalInformationDto<T> where T :  class
@@ -21,10 +21,25 @@ namespace Program.Models
         public bool IsHidden { get; set; }
         public bool? IsMandate { get; set; }
     }
-    public class QuestionsDto
+
+    public class QuestionDto
     {
-        public string Type { get; set; }
         public string Question { get; set; }
+    }
+    public class MultipleChoiceQuestionDto:QuestionDto
+    {
+        public List<string> ChoiceList { get; set; }
+        public int MaximumChoice { get; set; } = 1;
+        public bool IsOtherOptionAvailable { get; set; } = false;
+    }
+    public class DropdownQuesitionDto:QuestionDto
+    {
+        public List<string> ChoiceList { get; set; }
+        public bool IsOtherOptionAvailable { get; set; } = false;
+    }
+    public class YesOrNoQuestionDto : QuestionDto
+    {
+        public bool IsDisqualifyOnNo { get; set; }
     }
     public class PersonalInformationDto
     {
@@ -37,7 +52,7 @@ namespace Program.Models
         public InternalInformationDto<string> IdNumber { get; set; }
         public InternalInformationDto<string> DateOfBirth { get; set; }
         public InternalInformationDto<string> Gender { get;set; }
-        public List<QuestionsDto> QuestionList { get; set; }
+        public List<QuestionDto> QuestionList { get; set; }
     }
     public class EducationDto
     {
