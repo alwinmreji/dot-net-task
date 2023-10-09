@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Program.Helpers
 {
@@ -6,6 +7,8 @@ namespace Program.Helpers
     {
         public static IServiceCollection RegisterAppServices(this IServiceCollection services)
         {
+            services.AddScoped<ProblemDetails>();
+
             return services;
         }
     }

@@ -1,3 +1,6 @@
 .vs/
 Program/bin/
 Program/obj/
+*.PDF
+*.msi
+*.zip
